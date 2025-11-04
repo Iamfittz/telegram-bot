@@ -19,7 +19,7 @@ Simple Telegram bot built using **Go**, **Cobra**, and **Telebot**.
 # Example
 
 In Telegram:
-[ t.me/devops_fitz_testbot](url)
+https://t.me/devops_fitz_testbot
 
 Send any message — the bot will reply:
    ```bash
