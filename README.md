@@ -15,3 +15,12 @@ Simple Telegram bot built using **Go**, **Cobra**, and **Telebot**.
 4. Run the bot:
    ```bash
    go run main.go
+   
+# Example
+
+In Telegram:
+[ t.me/devops_fitz_testbot](url)
+
+Send any message — the bot will reply:
+   ```bash
+   Привіт, <ім’я>! Ти написав: <повідомлення>
