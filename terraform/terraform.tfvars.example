@@ -1,0 +1,4 @@
+github_owner     = "Iamfittz"
+github_token     = "ghp_your_token_here"
+flux_github_repo = "flux-infra"
+flux_target_path = "clusters/kind"
