@@ -8,7 +8,7 @@ image:
   registry: "ghcr.io"
   repository: "iamfittz/telegram-bot"
   pullPolicy: IfNotPresent
-  tag: "v1.0.0-e15f679"
+  tag: "v1.0.0-78b0a0f"
   os: linux
   arch: "amd64"
 
