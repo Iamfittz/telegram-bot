@@ -1,14 +1,19 @@
 package bot
 
 import (
+	"context"
 	"log"
 	"os"
 	"time"
 
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
 	tele "gopkg.in/telebot.v4"
 )
 
-func Start() {
+var tracer = otel.Tracer("telegram-bot")
+
+func Start(ctx context.Context) {
 	token := os.Getenv("TELE_TOKEN")
 	if token == "" {
 		log.Fatal("TELE_TOKEN not set")
@@ -25,9 +30,20 @@ func Start() {
 	}
 
 	b.Handle(tele.OnText, func(c tele.Context) error {
+		_, span := tracer.Start(ctx, "handle_message")
+		defer span.End()
+
 		user := c.Sender().FirstName
 		msg := c.Text()
-		log.Printf("Message from %s: %s", user, msg)
+
+		span.SetAttributes(
+			attribute.String("user.name", user),
+			attribute.Int("message.length", len(msg)),
+		)
+
+		log.Printf("[TraceID: %s] Message from %s: %s",
+			span.SpanContext().TraceID().String(), user, msg)
+
 		return c.Send("Привіт, " + user + "! Ти написав: " + msg)
 	})
 

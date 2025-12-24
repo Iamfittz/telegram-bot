@@ -1,6 +1,10 @@
 *.jpg
 *.txt
 
+# Binaries
+telegram-bot
+*.exe
+
 # Terraform
 terraform/.terraform/
 terraform/*.tfstate
